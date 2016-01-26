@@ -22,14 +22,21 @@ class newVersionDialog(wx.Dialog):
 		title = wx.StaticText(p, -1, 'Cura - ' + version.getVersion())
 		title.SetFont(wx.Font(18, wx.SWISS, wx.NORMAL, wx.BOLD))
 		s.Add(title, flag=wx.ALIGN_CENTRE|wx.EXPAND|wx.BOTTOM, border=5)
-		s.Add(wx.StaticText(p, -1, 'Welcome to the new version of Cura.'))
+		# swyoo 2016.01.25 change
+		# s.Add(wx.StaticText(p, -1, 'Welcome to the new version of Cura.'))
+		# s.Add(wx.StaticText(p, -1, '(This dialog is only shown once)'))
+		# s.Add(wx.StaticLine(p), flag=wx.EXPAND|wx.TOP|wx.BOTTOM, border=10)
+		# s.Add(wx.StaticText(p, -1, 'New in this version:'))
+		# s.Add(wx.StaticText(p, -1, '* Fixed a small issue where Cura sometimes failed enable the save button'))
+		# s.Add(wx.StaticText(p, -1, '* Added save gcode shortcut key (CTRL+G)'))
+		# s.Add(wx.StaticText(p, -1, '* Updated UM2, UM2go and UM2extended firmware for the new support url on errors'))
+		# s.Add(wx.StaticText(p, -1, '* Fixed small issue in the UM2go firmware'))
+		s.Add(wx.StaticText(p, -1, 'Welcome to the new version of Cura Flexor Edition.'))
 		s.Add(wx.StaticText(p, -1, '(This dialog is only shown once)'))
 		s.Add(wx.StaticLine(p), flag=wx.EXPAND|wx.TOP|wx.BOTTOM, border=10)
-		s.Add(wx.StaticText(p, -1, 'New in this version:'))
-		s.Add(wx.StaticText(p, -1, '* Fixed a small issue where Cura sometimes failed enable the save button'))
-		s.Add(wx.StaticText(p, -1, '* Added save gcode shortcut key (CTRL+G)'))
-		s.Add(wx.StaticText(p, -1, '* Updated UM2, UM2go and UM2extended firmware for the new support url on errors'))
-		s.Add(wx.StaticText(p, -1, '* Fixed small issue in the UM2go firmware'))
+		s.Add(wx.StaticText(p, -1, 'New in this version 15.04.01:'))
+		s.Add(wx.StaticText(p, -1, '* Assed save new setting for users'))
+		s.Add(wx.StaticText(p, -1, '* Fixed flexor product'))
 
 		self.hasUltimaker = None
 		self.hasUltimaker2 = None

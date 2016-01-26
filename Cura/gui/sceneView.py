@@ -104,6 +104,7 @@ class SceneView(openglGui.glGuiPanel):
 
 		self.viewSelection = openglGui.glComboButton(self, _("View mode"), [7,19,11,15,23], [_("Normal"), _("Overhang"), _("Transparent"), _("X-Ray"), _("Layers")], (-1,0), self.OnViewChange)
 
+		# swyoo 2016.01.25 prevent
 		self.youMagineButton = openglGui.glButton(self, 26, _("Share on YouMagine"), (2,0), lambda button: youmagineGui.youmagineManager(self.GetTopLevelParent(), self._scene))
 		self.youMagineButton.setDisabled(True)
 
@@ -134,10 +135,12 @@ class SceneView(openglGui.glGuiPanel):
 		self.printButton.setBottomText('')
 		self.viewSelection.setValue(4)
 		self.printButton.setDisabled(False)
+		# swyoo 2016.01.25 prevent
 		self.youMagineButton.setDisabled(True)
 		self.OnViewChange()
 
 	def loadSceneFiles(self, filenames):
+		# swyoo 2016.01.25 prevent
 		self.youMagineButton.setDisabled(False)
 		#if self.viewSelection.getValue() == 4:
 		#	self.viewSelection.setValue(0)
@@ -382,6 +385,7 @@ class SceneView(openglGui.glGuiPanel):
 			else:
 				self.notification.message("Saved as %s" % (targetFilename))
 		self.printButton.setProgressBar(None)
+		# swyoo 2016.01.25 prevent
 		self._engine.getResult().submitInfoOnline()
 
 	def _doEjectSD(self, drive):
