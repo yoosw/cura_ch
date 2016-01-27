@@ -619,7 +619,11 @@ class MachineSelectPage(InfoPage):
 			profile.putProfileSetting('print_speed','20')
 			profile.putProfileSetting('print_temperature','235')
 			# profile.putProfileSetting('print_bed_temperature','75')
-			profile.putProfileSetting('support','None')
+			if self.Flexo_D300Radio.GetValue() or self.Flexo_D500Radio.GetValue():
+				profile.putProfileSetting('support','Everywhere')
+				profile.putProfileSetting('support_dual_extrusion','Second extruder')
+			else:
+				profile.putProfileSetting('support','None')
 			profile.putProfileSetting('platform_adhesion','None')
 			profile.putProfileSetting('filament_diameter','1.75')
 			profile.putProfileSetting('filament_flow','100')

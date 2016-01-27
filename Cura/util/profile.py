@@ -329,6 +329,8 @@ setting('start2.gcode', """;Sliced at: {day} {date} {time}
 ;M104 S{print_temperature} ;Uncomment to add your own temperature line
 ;M109 T1 S{print_temperature2} ;Uncomment to add your own temperature line
 ;M109 T0 S{print_temperature} ;Uncomment to add your own temperature line
+G28        ;move to endstops
+G29        ;allows for auto-levelling
 G21        ;metric values
 G90        ;absolute positioning
 M107       ;start with the fan off
