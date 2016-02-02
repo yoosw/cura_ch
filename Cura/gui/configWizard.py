@@ -416,8 +416,8 @@ class MachineSelectPage(InfoPage):
 		self.AddText(_("What kind of machine do you have:"))
 
 		# swyoo 2016.01.23
-        #     self.Ultimaker2Radio = self.AddRadioButton("Ultimaker2", style=wx.RB_GROUP)
-        #     self.Ultimaker2Radio.SetValue(True)
+        # self.Ultimaker2Radio = self.AddRadioButton("Ultimaker2", style=wx.RB_GROUP)
+        # self.Ultimaker2Radio.SetValue(True)
 		self.Flexor_D300Radio = self.AddRadioButton("Flexor_D300", style=wx.RB_GROUP)
 		self.Flexor_D300Radio.Bind(wx.EVT_RADIOBUTTON, self.OnFlexor_D300Select)
 		self.Flexor_D300Radio.SetValue(True)
