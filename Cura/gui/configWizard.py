@@ -234,11 +234,12 @@ class FirstInfoPage(InfoPage):
 			self.AddText(_("Welcome, and thanks for trying Cura FLEXOR!"))
 			self.AddSeperator()
 		self.AddText(_("This wizard will help you in setting up Cura FLEXOR for your machine."))
-		if not addNew:
-			self.AddSeperator()
-			self._language_option = self.AddCombo(_("Select your language:"), map(lambda o: o[1], resources.getLanguageOptions()))
-		else:
-			self._language_option = None
+		# swyoo 2016.01.25 prevent language
+		# if not addNew:
+		# 	self.AddSeperator()
+		# 	self._language_option = self.AddCombo(_("Select your language:"), map(lambda o: o[1], resources.getLanguageOptions()))
+		# else:
+		# 	self._language_option = None
 		# self.AddText(_("This wizard will help you with the following steps:"))
 		# self.AddText(_("* Configure Cura for your machine"))
 		# self.AddText(_("* Optionally upgrade your firmware"))
@@ -417,37 +418,38 @@ class MachineSelectPage(InfoPage):
 		# swyoo 2016.01.23
         #     self.Ultimaker2Radio = self.AddRadioButton("Ultimaker2", style=wx.RB_GROUP)
         #     self.Ultimaker2Radio.SetValue(True)
-		self.Flexo_D300Radio = self.AddRadioButton("Flexo_D300", style=wx.RB_GROUP)
-		self.Flexo_D300Radio.Bind(wx.EVT_RADIOBUTTON, self.OnFlexor_D300Select)
-		self.Flexo_D300Radio.SetValue(True)
-		self.Flexo_S300Radio = self.AddRadioButton("Flexo_S300")
-		self.Flexo_S300Radio.Bind(wx.EVT_RADIOBUTTON, self.OnFlexor_S300Select)
-		self.Flexo_D500Radio = self.AddRadioButton("Flexo_D500")
-		self.Flexo_D500Radio.Bind(wx.EVT_RADIOBUTTON, self.OnFlexor_D500Select)
-		self.Ultimaker2Radio = self.AddRadioButton("Ultimaker2")
-		self.Ultimaker2Radio.Bind(wx.EVT_RADIOBUTTON, self.OnUltimaker2Select)
-		self.Ultimaker2ExtRadio = self.AddRadioButton("Ultimaker2extended")
-		self.Ultimaker2ExtRadio.Bind(wx.EVT_RADIOBUTTON, self.OnUltimaker2Select)
-		self.Ultimaker2GoRadio = self.AddRadioButton("Ultimaker2go")
-		self.Ultimaker2GoRadio.Bind(wx.EVT_RADIOBUTTON, self.OnUltimaker2Select)
-		self.UltimakerRadio = self.AddRadioButton("Ultimaker Original")
-		self.UltimakerRadio.Bind(wx.EVT_RADIOBUTTON, self.OnUltimakerSelect)
-		self.UltimakerOPRadio = self.AddRadioButton("Ultimaker Original+")
-		self.UltimakerOPRadio.Bind(wx.EVT_RADIOBUTTON, self.OnUltimakerOPSelect)
-		self.PrintrbotRadio = self.AddRadioButton("Printrbot")
-		self.PrintrbotRadio.Bind(wx.EVT_RADIOBUTTON, self.OnPrintrbotSelect)
-		self.LulzbotTazRadio = self.AddRadioButton("Lulzbot TAZ")
-		self.LulzbotTazRadio.Bind(wx.EVT_RADIOBUTTON, self.OnLulzbotSelect)
-		self.LulzbotMiniRadio = self.AddRadioButton("Lulzbot Mini")
-		self.LulzbotMiniRadio.Bind(wx.EVT_RADIOBUTTON, self.OnLulzbotSelect)
+		self.Flexor_D300Radio = self.AddRadioButton("Flexor_D300", style=wx.RB_GROUP)
+		self.Flexor_D300Radio.Bind(wx.EVT_RADIOBUTTON, self.OnFlexor_D300Select)
+		self.Flexor_D300Radio.SetValue(True)
+		self.Flexor_S300Radio = self.AddRadioButton("Flexor_S300")
+		self.Flexor_S300Radio.Bind(wx.EVT_RADIOBUTTON, self.OnFlexor_S300Select)
+		# self.Flexor_D500Radio = self.AddRadioButton("Flexor_D500")
+		# self.Flexor_D500Radio.Bind(wx.EVT_RADIOBUTTON, self.OnFlexor_D500Select)
+		# self.Ultimaker2Radio = self.AddRadioButton("Ultimaker2")
+		# self.Ultimaker2Radio.Bind(wx.EVT_RADIOBUTTON, self.OnUltimaker2Select)
+		# self.Ultimaker2ExtRadio = self.AddRadioButton("Ultimaker2extended")
+		# self.Ultimaker2ExtRadio.Bind(wx.EVT_RADIOBUTTON, self.OnUltimaker2Select)
+		# self.Ultimaker2GoRadio = self.AddRadioButton("Ultimaker2go")
+		# self.Ultimaker2GoRadio.Bind(wx.EVT_RADIOBUTTON, self.OnUltimaker2Select)
+		# self.UltimakerRadio = self.AddRadioButton("Ultimaker Original")
+		# self.UltimakerRadio.Bind(wx.EVT_RADIOBUTTON, self.OnUltimakerSelect)
+		# self.UltimakerOPRadio = self.AddRadioButton("Ultimaker Original+")
+		# self.UltimakerOPRadio.Bind(wx.EVT_RADIOBUTTON, self.OnUltimakerOPSelect)
+		# self.PrintrbotRadio = self.AddRadioButton("Printrbot")
+		# self.PrintrbotRadio.Bind(wx.EVT_RADIOBUTTON, self.OnPrintrbotSelect)
+		# self.LulzbotTazRadio = self.AddRadioButton("Lulzbot TAZ")
+		# self.LulzbotTazRadio.Bind(wx.EVT_RADIOBUTTON, self.OnLulzbotSelect)
+		# self.LulzbotMiniRadio = self.AddRadioButton("Lulzbot Mini")
+		# self.LulzbotMiniRadio.Bind(wx.EVT_RADIOBUTTON, self.OnLulzbotSelect)
 		self.OtherRadio = self.AddRadioButton(_("Other (Ex: RepRap, MakerBot, Witbox)"))
 		self.OtherRadio.Bind(wx.EVT_RADIOBUTTON, self.OnOtherSelect)
 		self.AddSeperator()
-		self.AddText(_("The collection of anonymous usage information helps with the continued improvement of Cura."))
-		self.AddText(_("This does NOT submit your models online nor gathers any privacy related information."))
-		self.SubmitUserStats = self.AddCheckbox(_("Submit anonymous usage information:"))
-		self.AddText(_("For full details see: http://wiki.ultimaker.com/Cura:stats"))
-		self.SubmitUserStats.SetValue(True)
+		# swyoo 2016.02.02 prevent
+		# self.AddText(_("The collection of anonymous usage information helps with the continued improvement of Cura."))
+		# self.AddText(_("This does NOT submit your models online nor gathers any privacy related information."))
+		# self.SubmitUserStats = self.AddCheckbox(_("Submit anonymous usage information:"))
+		# self.AddText(_("For full details see: http://wiki.ultimaker.com/Cura:stats"))
+		# self.SubmitUserStats.SetValue(True)
 
 	def OnUltimaker2Select(self, e):
 		wx.wizard.WizardPageSimple.Chain(self, self.GetParent().ultimaker2ReadyPage)
@@ -466,13 +468,13 @@ class MachineSelectPage(InfoPage):
 
 	# swyoo 2016.01.23
 	def OnFlexor_D300Select(self, e):
-		wx.wizard.WizardPageSimple.Chain(self, self.GetParent().flexo_d300ReadyPage)
+		wx.wizard.WizardPageSimple.Chain(self, self.GetParent().flexor_d300ReadyPage)
 
 	def OnFlexor_S300Select(self, e):
-		wx.wizard.WizardPageSimple.Chain(self, self.GetParent().flexo_s300ReadyPage)
+		wx.wizard.WizardPageSimple.Chain(self, self.GetParent().flexor_s300ReadyPage)
 
-	def OnFlexor_D500Select(self, e):
-		wx.wizard.WizardPageSimple.Chain(self, self.GetParent().flexo_d500ReadyPage)
+	# def OnFlexor_D500Select(self, e):
+	# 	wx.wizard.WizardPageSimple.Chain(self, self.GetParent().flexor_d500ReadyPage)
 
 	def OnOtherSelect(self, e):
 		wx.wizard.WizardPageSimple.Chain(self, self.GetParent().otherMachineSelectPage)
@@ -483,7 +485,7 @@ class MachineSelectPage(InfoPage):
 			wx.wizard.WizardPageSimple.Chain(self, self.GetParent().ultimaker2ReadyPage)
 			return True
 		else:
-			wx.wizard.WizardPageSimple.Chain(self, self.GetParent().flexo_d300ReadyPage)
+			wx.wizard.WizardPageSimple.Chain(self, self.GetParent().flexor_d300ReadyPage)
 			return True
 
 	def StoreData(self):
@@ -575,32 +577,33 @@ class MachineSelectPage(InfoPage):
 			profile.putMachineSetting('extruder_head_size_max_y', '0.0')
 			profile.putMachineSetting('extruder_head_size_height', '0.0')
 		# swyoo 2016.01.23
-		elif self.Flexo_D300Radio.GetValue() or self.Flexo_S300Radio.GetValue() or self.Flexo_D500Radio.GetValue():
+		# elif self.Flexor_D300Radio.GetValue() or self.Flexor_S300Radio.GetValue() or self.Flexor_D500Radio.GetValue():
+		elif self.Flexor_D300Radio.GetValue() or self.Flexor_S300Radio.GetValue():
 			#machine settings
-			if  self.Flexo_D300Radio.GetValue():
-				profile.putMachineSetting('machine_width', '300')
+			if  self.Flexor_D300Radio.GetValue():
+				profile.putMachineSetting('machine_width', '255')
 				profile.putMachineSetting('machine_depth', '150')
 				profile.putMachineSetting('machine_height', '150')
 				profile.putMachineSetting('machine_name', 'Flexo D300')
 				profile.putMachineSetting('machine_type', 'Flexor D300')
 				profile.putMachineSetting('serial_baud', '115000')
 				profile.putMachineSetting('extruder_amount', '2')
-			if self.Flexo_S300Radio.GetValue():
-				profile.putMachineSetting('machine_width', '255')
+			if self.Flexor_S300Radio.GetValue():
+				profile.putMachineSetting('machine_width', '300')
 				profile.putMachineSetting('machine_depth', '150')
 				profile.putMachineSetting('machine_height', '150')
 				profile.putMachineSetting('machine_name', 'Flexo S300')
 				profile.putMachineSetting('machine_type', 'Flexor S300')
 				profile.putMachineSetting('serial_baud', '115000')
 				profile.putMachineSetting('extruder_amount', '1')
-			if self.Flexo_D500Radio.GetValue():
-				profile.putMachineSetting('machine_width', '300')
-				profile.putMachineSetting('machine_depth', '300')
-				profile.putMachineSetting('machine_height', '300')
-				profile.putMachineSetting('machine_name', 'Flexo D500')
-				profile.putMachineSetting('machine_type', 'Flexor D500')
-				profile.putMachineSetting('serial_baud', '115000')
-				profile.putMachineSetting('extruder_amount', '2')
+			# if self.Flexor_D500Radio.GetValue():
+			# 	profile.putMachineSetting('machine_width', '300')
+			# 	profile.putMachineSetting('machine_depth', '300')
+			# 	profile.putMachineSetting('machine_height', '300')
+			# 	profile.putMachineSetting('machine_name', 'Flexo D500')
+			# 	profile.putMachineSetting('machine_type', 'Flexor D500')
+			# 	profile.putMachineSetting('serial_baud', '115000')
+			# 	profile.putMachineSetting('extruder_amount', '2')
 			profile.putMachineSetting('machine_center_is_zero', 'False')
 			profile.putMachineSetting('gcode_flavor', 'RepRap (Marlin/Sprinter)')
 			profile.putMachineSetting('has_heated_bed', 'False')
@@ -619,9 +622,12 @@ class MachineSelectPage(InfoPage):
 			profile.putProfileSetting('print_speed','20')
 			profile.putProfileSetting('print_temperature','235')
 			# profile.putProfileSetting('print_bed_temperature','75')
-			if self.Flexo_D300Radio.GetValue() or self.Flexo_D500Radio.GetValue():
+			# if self.Flexor_D300Radio.GetValue() or self.Flexor_D500Radio.GetValue():
+			if self.Flexor_D300Radio.GetValue():
 				profile.putProfileSetting('support','Everywhere')
 				profile.putProfileSetting('support_dual_extrusion','Second extruder')
+				profile.putMachineSetting('extruder_offset_x1', '32.0')
+				profile.putMachineSetting('extruder_offset_y1', '0.0')
 			else:
 				profile.putProfileSetting('support','None')
 			profile.putProfileSetting('platform_adhesion','None')
@@ -642,6 +648,7 @@ class MachineSelectPage(InfoPage):
 			profile.putProfileSetting('insetx_speed','0.0')
 			profile.putProfileSetting('cool_min_layer_time','5')
 			profile.putProfileSetting('fan_enabled','True')
+			profile.putProfileSetting('fan_full_height','0')
 		else:
 			profile.putMachineSetting('machine_width', '80')
 			profile.putMachineSetting('machine_depth', '80')
@@ -1121,23 +1128,23 @@ class LulzbotReadyPage(InfoPage):
 		self.AddSeperator()
 
 # swyoo 2016.01.23
-class flexo_d300ReadyPage(InfoPage):
+class flexor_d300ReadyPage(InfoPage):
 	def __init__(self, parent):
-		super(flexo_d300ReadyPage, self).__init__(parent, _("Flexor D300"))
+		super(flexor_d300ReadyPage, self).__init__(parent, _("Flexor D300"))
 		self.AddText('Cura is now ready to be used with your Flexor D300 printer.')
 		self.AddSeperator()
 
-class flexo_s300ReadyPage(InfoPage):
+class flexor_s300ReadyPage(InfoPage):
 	def __init__(self, parent):
-		super(flexo_s300ReadyPage, self).__init__(parent, _("Flexor S300"))
+		super(flexor_s300ReadyPage, self).__init__(parent, _("Flexor S300"))
 		self.AddText('Cura is now ready to be used with your Flexor S300 printer.')
 		self.AddSeperator()
 
-class flexo_d500ReadyPage(InfoPage):
-	def __init__(self, parent):
-		super(flexo_d500ReadyPage, self).__init__(parent, _("Flexor D500"))
-		self.AddText('Cura is now ready to be used with your Flexor D500 printer.')
-		self.AddSeperator()
+# class flexor_d500ReadyPage(InfoPage):
+# 	def __init__(self, parent):
+# 		super(flexor_d500ReadyPage, self).__init__(parent, _("Flexor D500"))
+# 		self.AddText('Cura is now ready to be used with your Flexor D500 printer.')
+# 		self.AddSeperator()
 
 class ConfigWizard(wx.wizard.Wizard):
 	def __init__(self, addNew = False):
@@ -1169,9 +1176,9 @@ class ConfigWizard(wx.wizard.Wizard):
 		self.lulzbotReadyPage = LulzbotReadyPage(self)
 
 		# swyoo 2016.01.23
-		self.flexo_d300ReadyPage = flexo_d300ReadyPage(self)
-		self.flexo_s300ReadyPage = flexo_s300ReadyPage(self)
-		self.flexo_d500ReadyPage = flexo_d500ReadyPage(self)
+		self.flexor_d300ReadyPage = flexor_d300ReadyPage(self)
+		self.flexor_s300ReadyPage = flexor_s300ReadyPage(self)
+		# self.flexor_d500ReadyPage = flexor_d500ReadyPage(self)
 
 		wx.wizard.WizardPageSimple.Chain(self.firstInfoPage, self.machineSelectPage)
 		#wx.wizard.WizardPageSimple.Chain(self.machineSelectPage, self.ultimaker2ReadyPage)

@@ -110,28 +110,30 @@ class CuraApp(wx.App):
 		resources.setupLocalization(profile.getPreference('language'))  # it's important to set up localization at very beginning to install _
 
 		#If we do not have preferences yet, try to load it from a previous Cura install
-		if profile.getMachineSetting('machine_type') == 'unknown':
-			try:
-				otherCuraInstalls = profile.getAlternativeBasePaths()
-				for path in otherCuraInstalls[::-1]:
-					try:
-						print 'Loading old settings from %s' % (path)
-						profile.loadPreferences(os.path.join(path, 'preferences.ini'))
-						profile.loadProfile(os.path.join(path, 'current_profile.ini'))
-						break
-					except:
-						import traceback
-						print traceback.print_exc()
-			except:
-				import traceback
-				print traceback.print_exc()
+		# swyoo 2016.02.01
+		# if profile.getMachineSetting('machine_type') == 'unknown':
+		# 	try:
+		# 		otherCuraInstalls = profile.getAlternativeBasePaths()
+		# 		for path in otherCuraInstalls[::-1]:
+		# 			try:
+		# 				print 'Loading old settings from %s' % (path)
+		# 				profile.loadPreferences(os.path.join(path, 'preferences.ini'))
+		# 				profile.loadProfile(os.path.join(path, 'current_profile.ini'))
+		# 				break
+		# 			except:
+		# 				import traceback
+		# 				print traceback.print_exc()
+		# 	except:
+		# 		import traceback
+		# 		print traceback.print_exc()
 
 		#If we haven't run it before, run the configuration wizard.
 		if profile.getMachineSetting('machine_type') == 'unknown':
 			#Check if we need to copy our examples
-			exampleFile = os.path.normpath(os.path.join(resources.resourceBasePath, 'example', 'UltimakerRobot_support.stl'))
+			# swyoo 2016.02.01
+			# exampleFile = os.path.normpath(os.path.join(resources.resourceBasePath, 'example', 'UltimakerRobot_support.stl'))
 
-			self.loadFiles = [exampleFile]
+			# self.loadFiles = [exampleFile]
 			if self.splash is not None:
 				self.splash.Show(False)
 			configWizard.ConfigWizard()
