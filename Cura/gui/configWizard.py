@@ -234,7 +234,7 @@ class FirstInfoPage(InfoPage):
 			self.AddText(_("Welcome, and thanks for trying Cura FLEXOR!"))
 			self.AddSeperator()
 		self.AddText(_("This wizard will help you in setting up Cura FLEXOR for your machine."))
-		# swyoo 2016.01.25 prevent language
+		# swyoo 2016.02.02. prevent language
 		# if not addNew:
 		# 	self.AddSeperator()
 		# 	self._language_option = self.AddCombo(_("Select your language:"), map(lambda o: o[1], resources.getLanguageOptions()))
@@ -252,10 +252,11 @@ class FirstInfoPage(InfoPage):
 	def AllowBack(self):
 		return False
 
-	def StoreData(self):
-		if self._language_option is not None:
-			profile.putPreference('language', self._language_option.GetValue())
-			resources.setupLocalization(self._language_option.GetValue())
+	# swyoo 2016.02.02 prevent language
+	# def StoreData(self):
+	# 	if self._language_option is not None:
+	# 		profile.putPreference('language', self._language_option.GetValue())
+	# 		resources.setupLocalization(self._language_option.GetValue())
 
 class PrintrbotPage(InfoPage):
 	def __init__(self, parent):
@@ -494,95 +495,95 @@ class MachineSelectPage(InfoPage):
 
 	def StoreData(self):
 		profile.putProfileSetting('retraction_enable', 'True')
-		if self.Ultimaker2Radio.GetValue() or self.Ultimaker2GoRadio.GetValue() or self.Ultimaker2ExtRadio.GetValue():
-			if self.Ultimaker2Radio.GetValue():
-				profile.putMachineSetting('machine_width', '230')
-				profile.putMachineSetting('machine_depth', '225')
-				profile.putMachineSetting('machine_height', '205')
-				profile.putMachineSetting('machine_name', 'ultimaker2')
-				profile.putMachineSetting('machine_type', 'ultimaker2')
-				profile.putMachineSetting('has_heated_bed', 'True')
-			if self.Ultimaker2GoRadio.GetValue():
-				profile.putMachineSetting('machine_width', '120')
-				profile.putMachineSetting('machine_depth', '120')
-				profile.putMachineSetting('machine_height', '115')
-				profile.putMachineSetting('machine_name', 'ultimaker2go')
-				profile.putMachineSetting('machine_type', 'ultimaker2go')
-				profile.putMachineSetting('has_heated_bed', 'False')
-			if self.Ultimaker2ExtRadio.GetValue():
-				profile.putMachineSetting('machine_width', '230')
-				profile.putMachineSetting('machine_depth', '225')
-				profile.putMachineSetting('machine_height', '315')
-				profile.putMachineSetting('machine_name', 'ultimaker2extended')
-				profile.putMachineSetting('machine_type', 'ultimaker2extended')
-				profile.putMachineSetting('has_heated_bed', 'False')
-			profile.putMachineSetting('machine_center_is_zero', 'False')
-			profile.putMachineSetting('gcode_flavor', 'UltiGCode')
-			profile.putMachineSetting('extruder_head_size_min_x', '40.0')
-			profile.putMachineSetting('extruder_head_size_min_y', '10.0')
-			profile.putMachineSetting('extruder_head_size_max_x', '60.0')
-			profile.putMachineSetting('extruder_head_size_max_y', '30.0')
-			profile.putMachineSetting('extruder_head_size_height', '48.0')
-			profile.putProfileSetting('nozzle_size', '0.4')
-			profile.putProfileSetting('fan_full_height', '5.0')
-			profile.putMachineSetting('extruder_offset_x1', '18.0')
-			profile.putMachineSetting('extruder_offset_y1', '0.0')
-		elif self.UltimakerRadio.GetValue():
-			profile.putMachineSetting('machine_width', '205')
-			profile.putMachineSetting('machine_depth', '205')
-			profile.putMachineSetting('machine_height', '200')
-			profile.putMachineSetting('machine_name', 'ultimaker original')
-			profile.putMachineSetting('machine_type', 'ultimaker')
-			profile.putMachineSetting('machine_center_is_zero', 'False')
-			profile.putMachineSetting('gcode_flavor', 'RepRap (Marlin/Sprinter)')
-			profile.putProfileSetting('nozzle_size', '0.4')
-			profile.putMachineSetting('extruder_head_size_min_x', '75.0')
-			profile.putMachineSetting('extruder_head_size_min_y', '18.0')
-			profile.putMachineSetting('extruder_head_size_max_x', '18.0')
-			profile.putMachineSetting('extruder_head_size_max_y', '35.0')
-			profile.putMachineSetting('extruder_head_size_height', '55.0')
-		elif self.UltimakerOPRadio.GetValue():
-			profile.putMachineSetting('machine_width', '205')
-			profile.putMachineSetting('machine_depth', '205')
-			profile.putMachineSetting('machine_height', '200')
-			profile.putMachineSetting('machine_name', 'ultimaker original+')
-			profile.putMachineSetting('machine_type', 'ultimaker_plus')
-			profile.putMachineSetting('machine_center_is_zero', 'False')
-			profile.putMachineSetting('gcode_flavor', 'RepRap (Marlin/Sprinter)')
-			profile.putProfileSetting('nozzle_size', '0.4')
-			profile.putMachineSetting('extruder_head_size_min_x', '75.0')
-			profile.putMachineSetting('extruder_head_size_min_y', '18.0')
-			profile.putMachineSetting('extruder_head_size_max_x', '18.0')
-			profile.putMachineSetting('extruder_head_size_max_y', '35.0')
-			profile.putMachineSetting('extruder_head_size_height', '55.0')
-			profile.putMachineSetting('has_heated_bed', 'True')
-			profile.putMachineSetting('extruder_amount', '1')
-			profile.putProfileSetting('retraction_enable', 'True')
-		elif self.LulzbotTazRadio.GetValue() or self.LulzbotMiniRadio.GetValue():
-			if self.LulzbotTazRadio.GetValue():
-				profile.putMachineSetting('machine_width', '298')
-				profile.putMachineSetting('machine_depth', '275')
-				profile.putMachineSetting('machine_height', '250')
-				profile.putProfileSetting('nozzle_size', '0.35')
-				profile.putMachineSetting('machine_name', 'Lulzbot TAZ')
-			else:
-				profile.putMachineSetting('machine_width', '160')
-				profile.putMachineSetting('machine_depth', '160')
-				profile.putMachineSetting('machine_height', '160')
-				profile.putProfileSetting('nozzle_size', '0.5')
-				profile.putMachineSetting('machine_name', 'Lulzbot Mini')
-			profile.putMachineSetting('machine_type', 'Aleph Objects')
-			profile.putMachineSetting('machine_center_is_zero', 'False')
-			profile.putMachineSetting('gcode_flavor', 'RepRap (Marlin/Sprinter)')
-			profile.putMachineSetting('has_heated_bed', 'True')
-			profile.putMachineSetting('extruder_head_size_min_x', '0.0')
-			profile.putMachineSetting('extruder_head_size_min_y', '0.0')
-			profile.putMachineSetting('extruder_head_size_max_x', '0.0')
-			profile.putMachineSetting('extruder_head_size_max_y', '0.0')
-			profile.putMachineSetting('extruder_head_size_height', '0.0')
-		# swyoo 2016.01.23
+		# swyoo 2016.02.02. change
+		# if self.Ultimaker2Radio.GetValue() or self.Ultimaker2GoRadio.GetValue() or self.Ultimaker2ExtRadio.GetValue():
+		# 	if self.Ultimaker2Radio.GetValue():
+		# 		profile.putMachineSetting('machine_width', '230')
+		# 		profile.putMachineSetting('machine_depth', '225')
+		# 		profile.putMachineSetting('machine_height', '205')
+		# 		profile.putMachineSetting('machine_name', 'ultimaker2')
+		# 		profile.putMachineSetting('machine_type', 'ultimaker2')
+		# 		profile.putMachineSetting('has_heated_bed', 'True')
+		# 	if self.Ultimaker2GoRadio.GetValue():
+		# 		profile.putMachineSetting('machine_width', '120')
+		# 		profile.putMachineSetting('machine_depth', '120')
+		# 		profile.putMachineSetting('machine_height', '115')
+		# 		profile.putMachineSetting('machine_name', 'ultimaker2go')
+		# 		profile.putMachineSetting('machine_type', 'ultimaker2go')
+		# 		profile.putMachineSetting('has_heated_bed', 'False')
+		# 	if self.Ultimaker2ExtRadio.GetValue():
+		# 		profile.putMachineSetting('machine_width', '230')
+		# 		profile.putMachineSetting('machine_depth', '225')
+		# 		profile.putMachineSetting('machine_height', '315')
+		# 		profile.putMachineSetting('machine_name', 'ultimaker2extended')
+		# 		profile.putMachineSetting('machine_type', 'ultimaker2extended')
+		# 		profile.putMachineSetting('has_heated_bed', 'False')
+		# 	profile.putMachineSetting('machine_center_is_zero', 'False')
+		# 	profile.putMachineSetting('gcode_flavor', 'UltiGCode')
+		# 	profile.putMachineSetting('extruder_head_size_min_x', '40.0')
+		# 	profile.putMachineSetting('extruder_head_size_min_y', '10.0')
+		# 	profile.putMachineSetting('extruder_head_size_max_x', '60.0')
+		# 	profile.putMachineSetting('extruder_head_size_max_y', '30.0')
+		# 	profile.putMachineSetting('extruder_head_size_height', '48.0')
+		# 	profile.putProfileSetting('nozzle_size', '0.4')
+		# 	profile.putProfileSetting('fan_full_height', '5.0')
+		# 	profile.putMachineSetting('extruder_offset_x1', '18.0')
+		# 	profile.putMachineSetting('extruder_offset_y1', '0.0')
+		# elif self.UltimakerRadio.GetValue():
+		# 	profile.putMachineSetting('machine_width', '205')
+		# 	profile.putMachineSetting('machine_depth', '205')
+		# 	profile.putMachineSetting('machine_height', '200')
+		# 	profile.putMachineSetting('machine_name', 'ultimaker original')
+		# 	profile.putMachineSetting('machine_type', 'ultimaker')
+		# 	profile.putMachineSetting('machine_center_is_zero', 'False')
+		# 	profile.putMachineSetting('gcode_flavor', 'RepRap (Marlin/Sprinter)')
+		# 	profile.putProfileSetting('nozzle_size', '0.4')
+		# 	profile.putMachineSetting('extruder_head_size_min_x', '75.0')
+		# 	profile.putMachineSetting('extruder_head_size_min_y', '18.0')
+		# 	profile.putMachineSetting('extruder_head_size_max_x', '18.0')
+		# 	profile.putMachineSetting('extruder_head_size_max_y', '35.0')
+		# 	profile.putMachineSetting('extruder_head_size_height', '55.0')
+		# elif self.UltimakerOPRadio.GetValue():
+		# 	profile.putMachineSetting('machine_width', '205')
+		# 	profile.putMachineSetting('machine_depth', '205')
+		# 	profile.putMachineSetting('machine_height', '200')
+		# 	profile.putMachineSetting('machine_name', 'ultimaker original+')
+		# 	profile.putMachineSetting('machine_type', 'ultimaker_plus')
+		# 	profile.putMachineSetting('machine_center_is_zero', 'False')
+		# 	profile.putMachineSetting('gcode_flavor', 'RepRap (Marlin/Sprinter)')
+		# 	profile.putProfileSetting('nozzle_size', '0.4')
+		# 	profile.putMachineSetting('extruder_head_size_min_x', '75.0')
+		# 	profile.putMachineSetting('extruder_head_size_min_y', '18.0')
+		# 	profile.putMachineSetting('extruder_head_size_max_x', '18.0')
+		# 	profile.putMachineSetting('extruder_head_size_max_y', '35.0')
+		# 	profile.putMachineSetting('extruder_head_size_height', '55.0')
+		# 	profile.putMachineSetting('has_heated_bed', 'True')
+		# 	profile.putMachineSetting('extruder_amount', '1')
+		# 	profile.putProfileSetting('retraction_enable', 'True')
+		# elif self.LulzbotTazRadio.GetValue() or self.LulzbotMiniRadio.GetValue():
+		# 	if self.LulzbotTazRadio.GetValue():
+		# 		profile.putMachineSetting('machine_width', '298')
+		# 		profile.putMachineSetting('machine_depth', '275')
+		# 		profile.putMachineSetting('machine_height', '250')
+		# 		profile.putProfileSetting('nozzle_size', '0.35')
+		# 		profile.putMachineSetting('machine_name', 'Lulzbot TAZ')
+		# 	else:
+		# 		profile.putMachineSetting('machine_width', '160')
+		# 		profile.putMachineSetting('machine_depth', '160')
+		# 		profile.putMachineSetting('machine_height', '160')
+		# 		profile.putProfileSetting('nozzle_size', '0.5')
+		# 		profile.putMachineSetting('machine_name', 'Lulzbot Mini')
+		# 	profile.putMachineSetting('machine_type', 'Aleph Objects')
+		# 	profile.putMachineSetting('machine_center_is_zero', 'False')
+		# 	profile.putMachineSetting('gcode_flavor', 'RepRap (Marlin/Sprinter)')
+		# 	profile.putMachineSetting('has_heated_bed', 'True')
+		# 	profile.putMachineSetting('extruder_head_size_min_x', '0.0')
+		# 	profile.putMachineSetting('extruder_head_size_min_y', '0.0')
+		# 	profile.putMachineSetting('extruder_head_size_max_x', '0.0')
+		# 	profile.putMachineSetting('extruder_head_size_max_y', '0.0')
+		# 	profile.putMachineSetting('extruder_head_size_height', '0.0')
 		# elif self.Flexor_D300Radio.GetValue() or self.Flexor_S300Radio.GetValue() or self.Flexor_D500Radio.GetValue():
-		elif self.Flexor_D300Radio.GetValue() or self.Flexor_S300Radio.GetValue():
+		if self.Flexor_D300Radio.GetValue() or self.Flexor_S300Radio.GetValue():
 			#machine settings
 			if  self.Flexor_D300Radio.GetValue():
 				profile.putMachineSetting('machine_width', '255')
