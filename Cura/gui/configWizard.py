@@ -344,8 +344,10 @@ M117 Printing...
 class OtherMachineSelectPage(InfoPage):
 	def __init__(self, parent):
 		super(OtherMachineSelectPage, self).__init__(parent, _("Other machine information"))
+		# swyoo 2016.02.02 change
 		self.AddText(_("The following pre-defined machine profiles are available"))
-		self.AddText(_("Note that these profiles are not guaranteed to give good results,\nor work at all. Extra tweaks might be required.\nIf you find issues with the predefined profiles,\nor want an extra profile.\nPlease report it at the github issue tracker."))
+		self.AddText(_("also custom Reprap machine are available"))
+		# self.AddText(_("Note that these profiles are not guaranteed to give good results,\nor work at all. Extra tweaks might be required.\nIf you find issues with the predefined profiles,\nor want an extra profile.\nPlease report it at the github issue tracker."))
 		self.options = []
 		machines = resources.getDefaultMachineProfiles()
 		machines.sort()
@@ -441,7 +443,9 @@ class MachineSelectPage(InfoPage):
 		# self.LulzbotTazRadio.Bind(wx.EVT_RADIOBUTTON, self.OnLulzbotSelect)
 		# self.LulzbotMiniRadio = self.AddRadioButton("Lulzbot Mini")
 		# self.LulzbotMiniRadio.Bind(wx.EVT_RADIOBUTTON, self.OnLulzbotSelect)
-		self.OtherRadio = self.AddRadioButton(_("Other (Ex: RepRap, MakerBot, Witbox)"))
+		# self.OtherRadio = self.AddRadioButton(_("Other (Ex: RepRap, MakerBot, Witbox)"))
+		# swyoo 2016.02.02
+		self.OtherRadio = self.AddRadioButton(_("Other (Ex: RepRap)"))
 		self.OtherRadio.Bind(wx.EVT_RADIOBUTTON, self.OnOtherSelect)
 		self.AddSeperator()
 		# swyoo 2016.02.02 prevent
