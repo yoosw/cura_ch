@@ -417,10 +417,7 @@ class MachineSelectPage(InfoPage):
 	def __init__(self, parent):
 		super(MachineSelectPage, self).__init__(parent, _("Select your machine"))
 		self.AddText(_("What kind of machine do you have:"))
-
 		# swyoo 2016.01.23
-        # self.Ultimaker2Radio = self.AddRadioButton("Ultimaker2", style=wx.RB_GROUP)
-        # self.Ultimaker2Radio.SetValue(True)
 		self.Flexor_D300Radio = self.AddRadioButton("Flexor_D300", style=wx.RB_GROUP)
 		self.Flexor_D300Radio.Bind(wx.EVT_RADIOBUTTON, self.OnFlexor_D300Select)
 		self.Flexor_D300Radio.SetValue(True)
@@ -428,7 +425,9 @@ class MachineSelectPage(InfoPage):
 		self.Flexor_S300Radio.Bind(wx.EVT_RADIOBUTTON, self.OnFlexor_S300Select)
 		# self.Flexor_D500Radio = self.AddRadioButton("Flexor_D500")
 		# self.Flexor_D500Radio.Bind(wx.EVT_RADIOBUTTON, self.OnFlexor_D500Select)
-		# self.Ultimaker2Radio = self.AddRadioButton("Ultimaker2")
+
+		# self.Ultimaker2Radio = self.AddRadioButton("Ultimaker2", style=wx.RB_GROUP)
+        # self.Ultimaker2Radio.SetValue(True)
 		# self.Ultimaker2Radio.Bind(wx.EVT_RADIOBUTTON, self.OnUltimaker2Select)
 		# self.Ultimaker2ExtRadio = self.AddRadioButton("Ultimaker2extended")
 		# self.Ultimaker2ExtRadio.Bind(wx.EVT_RADIOBUTTON, self.OnUltimaker2Select)
@@ -444,8 +443,8 @@ class MachineSelectPage(InfoPage):
 		# self.LulzbotTazRadio.Bind(wx.EVT_RADIOBUTTON, self.OnLulzbotSelect)
 		# self.LulzbotMiniRadio = self.AddRadioButton("Lulzbot Mini")
 		# self.LulzbotMiniRadio.Bind(wx.EVT_RADIOBUTTON, self.OnLulzbotSelect)
-		# self.OtherRadio = self.AddRadioButton(_("Other (Ex: RepRap, MakerBot, Witbox)"))
 		# swyoo 2016.02.02
+		# self.OtherRadio = self.AddRadioButton(_("Other (Ex: RepRap, MakerBot, Witbox)"))
 		self.OtherRadio = self.AddRadioButton(_("Other (Ex: RepRap)"))
 		self.OtherRadio.Bind(wx.EVT_RADIOBUTTON, self.OnOtherSelect)
 		self.AddSeperator()
@@ -478,20 +477,17 @@ class MachineSelectPage(InfoPage):
 	def OnFlexor_S300Select(self, e):
 		wx.wizard.WizardPageSimple.Chain(self, self.GetParent().flexor_s300ReadyPage)
 
-	# def OnFlexor_D500Select(self, e):
-	# 	wx.wizard.WizardPageSimple.Chain(self, self.GetParent().flexor_d500ReadyPage)
+	def OnFlexor_D500Select(self, e):
+		wx.wizard.WizardPageSimple.Chain(self, self.GetParent().flexor_d500ReadyPage)
 
 	def OnOtherSelect(self, e):
 		wx.wizard.WizardPageSimple.Chain(self, self.GetParent().otherMachineSelectPage)
 
-	# swyoo 2016.01.23
 	def AllowNext(self):
-		if 0 :
-			wx.wizard.WizardPageSimple.Chain(self, self.GetParent().ultimaker2ReadyPage)
-			return True
-		else:
-			wx.wizard.WizardPageSimple.Chain(self, self.GetParent().flexor_d300ReadyPage)
-			return True
+		# swyoo 2016.01.23
+		# wx.wizard.WizardPageSimple.Chain(self, self.GetParent().ultimaker2ReadyPage)
+		wx.wizard.WizardPageSimple.Chain(self, self.GetParent().flexor_d300ReadyPage)
+		return True
 
 	def StoreData(self):
 		profile.putProfileSetting('retraction_enable', 'True')
@@ -590,7 +586,7 @@ class MachineSelectPage(InfoPage):
 				profile.putMachineSetting('machine_depth', '150')
 				profile.putMachineSetting('machine_height', '150')
 				profile.putMachineSetting('machine_name', 'Flexo D300')
-				profile.putMachineSetting('machine_type', 'Flexor D300')
+				profile.putMachineSetting('machine_type', 'reprap')
 				profile.putMachineSetting('serial_baud', '115000')
 				profile.putMachineSetting('extruder_amount', '2')
 			if self.Flexor_S300Radio.GetValue():
@@ -598,7 +594,7 @@ class MachineSelectPage(InfoPage):
 				profile.putMachineSetting('machine_depth', '150')
 				profile.putMachineSetting('machine_height', '150')
 				profile.putMachineSetting('machine_name', 'Flexo S300')
-				profile.putMachineSetting('machine_type', 'Flexor S300')
+				profile.putMachineSetting('machine_type', 'reprap')
 				profile.putMachineSetting('serial_baud', '115000')
 				profile.putMachineSetting('extruder_amount', '1')
 			# if self.Flexor_D500Radio.GetValue():
@@ -611,6 +607,7 @@ class MachineSelectPage(InfoPage):
 			# 	profile.putMachineSetting('extruder_amount', '2')
 			profile.putMachineSetting('machine_center_is_zero', 'False')
 			profile.putMachineSetting('gcode_flavor', 'RepRap (Marlin/Sprinter)')
+			profile.putPreference('startMode', 'Normal')
 			profile.putMachineSetting('has_heated_bed', 'False')
 			profile.putMachineSetting('extruder_head_size_min_x', '0.0')
 			profile.putMachineSetting('extruder_head_size_min_y', '0.0')
