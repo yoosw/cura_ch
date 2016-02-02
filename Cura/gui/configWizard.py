@@ -582,7 +582,7 @@ class MachineSelectPage(InfoPage):
 		if self.Flexor_D300Radio.GetValue() or self.Flexor_S300Radio.GetValue():
 			#machine settings
 			if  self.Flexor_D300Radio.GetValue():
-				profile.putMachineSetting('machine_width', '255')
+				profile.putMachineSetting('machine_width', '300')
 				profile.putMachineSetting('machine_depth', '150')
 				profile.putMachineSetting('machine_height', '150')
 				profile.putMachineSetting('machine_name', 'Flexo D300')
@@ -621,7 +621,7 @@ class MachineSelectPage(InfoPage):
 			profile.putProfileSetting('retraction_enable','True')
 			profile.putProfileSetting('solid_layer_thickness','0.6')
 			profile.putProfileSetting('fill_density','50')
-			profile.putProfileSetting('print_speed','20')
+			profile.putProfileSetting('print_speed','25')
 			profile.putProfileSetting('print_temperature','235')
 			# profile.putProfileSetting('print_bed_temperature','75')
 			# if self.Flexor_D300Radio.GetValue() or self.Flexor_D500Radio.GetValue():
@@ -637,7 +637,7 @@ class MachineSelectPage(InfoPage):
 			profile.putProfileSetting('filament_flow','100')
 			# - advanced -
 			profile.putProfileSetting('nozzle_size', '0.4')
-			profile.putProfileSetting('retraction_speed','20')
+			profile.putProfileSetting('retraction_speed','25')
 			profile.putProfileSetting('retraction_amount','2')
 			profile.putProfileSetting('bottom_thickness','0.3')
 			profile.putProfileSetting('layer0_width_factor','100')
