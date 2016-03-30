@@ -20,6 +20,7 @@ msgstr ""
 msgid "A new version of Cura is available, would you like to download?"
 msgstr ""
 
+
 #: Cura/gui/app.py:144 Cura/gui/mainWindow.py:649
 msgid "New version available"
 msgstr ""
