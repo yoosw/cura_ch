@@ -287,7 +287,8 @@ setting('start.gcode', """;Sliced at: {day} {date} {time}
 ;M190 S{print_bed_temperature} ;Uncomment to add your own bed temperature line
 ;M109 S{print_temperature} ;Uncomment to add your own temperature line
 G28        ;move to endstops
-G29        ;allows for auto-levelling
+G29 X#F_X# Y#F_Y# W#F_W# H#F_H# V3
+
 G21        ;metric values
 G90        ;absolute positioning
 M82        ;set extruder to absolute mode
@@ -327,7 +328,8 @@ setting('start2.gcode', """;Sliced at: {day} {date} {time}
 ;M109 T1 S{print_temperature2} ;Uncomment to add your own temperature line
 ;M109 T0 S{print_temperature} ;Uncomment to add your own temperature line
 G28        ;move to endstops
-G29        ;allows for auto-levelling
+G29 X#F_X# Y#F_Y# W#F_W# H#F_H# V3
+
 G21        ;metric values
 G90        ;absolute positioning
 M107       ;start with the fan off

@@ -347,6 +347,12 @@ class Engine(object):
 			pos += (objMin + objMax) / 2.0 * 1000
 			commandList += ['-s', 'posx=%d' % int(pos[0]), '-s', 'posy=%d' % int(pos[1])]
 
+			#swyoo 2016.03.28 for variable auto leveling
+			g29_x = round(objMin[0], 2)
+			g29_y = round(objMin[1], 2)
+			g29_w = round(objMax[0] - objMin[0], 2)
+			g29_h = round(objMax[1] - objMin[1], 2)
+
 			vertexTotal = [0] * 4
 			meshMax = 1
 			for obj in scene.objects():
@@ -418,6 +424,13 @@ class Engine(object):
 				self._result.addReplaceTag('#F_AMNT#', self._result.getFilamentAmountMeters(0))
 				self._result.addReplaceTag('#F_WGHT#', math.floor(self._result.getFilamentWeight(0) * 1000.0))
 				self._result.addReplaceTag('#F_COST#', self._result.getFilamentCost(0))
+
+				#swyoo 2016.03.28 for variable auto leveling
+				self._result.addReplaceTag('#F_X#', g29_x)
+				self._result.addReplaceTag('#F_Y#', g29_y)
+				self._result.addReplaceTag('#F_W#', g29_w)
+				self._result.addReplaceTag('#F_H#', g29_h)
+
 				self._result.applyReplaceTags()
 				plugin_error = pluginInfo.runPostProcessingPlugins(self._result)
 				if plugin_error is not None:

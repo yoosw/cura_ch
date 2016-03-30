@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Cura/gui/app.py:144 Cura/gui/mainWindow.py:642
+#: Cura/gui/app.py:144 Cura/gui/mainWindow.py:649
 msgid "A new version of Cura is available, would you like to download?"
 msgstr ""
 
-#: Cura/gui/app.py:144 Cura/gui/mainWindow.py:642
+#: Cura/gui/app.py:144 Cura/gui/mainWindow.py:649
 msgid "New version available"
 msgstr ""
 
@@ -37,7 +37,7 @@ msgid "Welcome, and thanks for trying Cura!"
 msgstr ""
 
 #: Cura/gui/configWizard.py:236
-msgid "This wizard will help you in setting up Cura for your machine."
+msgid "This wizard will help you in setting up Cura FLEXOR for your machine."
 msgstr ""
 
 #: Cura/gui/configWizard.py:239
@@ -130,7 +130,7 @@ msgstr ""
 msgid "Nozzle size (mm)"
 msgstr ""
 
-#: Cura/gui/configWizard.py:393 Cura/util/profile.py:534
+#: Cura/gui/configWizard.py:393 Cura/util/profile.py:535
 msgid "Heated bed"
 msgstr ""
 
@@ -146,94 +146,74 @@ msgstr ""
 msgid "What kind of machine do you have:"
 msgstr ""
 
-#: Cura/gui/configWizard.py:434
-msgid "Other (Ex: RepRap, MakerBot, Witbox)"
+#: Cura/gui/configWizard.py:443
+msgid "Other (Ex: RepRap)"
 msgstr ""
 
-#: Cura/gui/configWizard.py:437
-msgid ""
-"The collection of anonymous usage information helps with the continued "
-"improvement of Cura."
-msgstr ""
-
-#: Cura/gui/configWizard.py:438
-msgid ""
-"This does NOT submit your models online nor gathers any privacy related "
-"information."
-msgstr ""
-
-#: Cura/gui/configWizard.py:439
-msgid "Submit anonymous usage information:"
-msgstr ""
-
-#: Cura/gui/configWizard.py:440
-msgid "For full details see: http://wiki.ultimaker.com/Cura:stats"
-msgstr ""
-
-#: Cura/gui/configWizard.py:572
+#: Cura/gui/configWizard.py:668
 msgid "Select upgraded parts you have"
 msgstr ""
 
-#: Cura/gui/configWizard.py:573
+#: Cura/gui/configWizard.py:669
 msgid ""
 "To assist you in having better default settings for your Ultimaker\n"
 "Cura would like to know which upgrades you have in your machine."
 msgstr ""
 
-#: Cura/gui/configWizard.py:575
+#: Cura/gui/configWizard.py:671
 msgid "Extruder drive upgrade"
 msgstr ""
 
-#: Cura/gui/configWizard.py:576
+#: Cura/gui/configWizard.py:672
 msgid "Heated printer bed (kit)"
 msgstr ""
 
-#: Cura/gui/configWizard.py:577
+#: Cura/gui/configWizard.py:673
 msgid "Heated printer bed (self built)"
 msgstr ""
 
-#: Cura/gui/configWizard.py:578
+#: Cura/gui/configWizard.py:674
 msgid "Dual extrusion (experimental)"
 msgstr ""
 
-#: Cura/gui/configWizard.py:580
+#: Cura/gui/configWizard.py:676
 msgid ""
 "If you have an Ultimaker bought after october 2012 you will have the\n"
 "Extruder drive upgrade. If you do not have this upgrade,\n"
 "it is highly recommended to improve reliability."
 msgstr ""
 
-#: Cura/gui/configWizard.py:581
+#: Cura/gui/configWizard.py:677
 msgid ""
 "This upgrade can be bought from the Ultimaker webshop\n"
 "or found on thingiverse as thing:26094"
 msgstr ""
 
-#: Cura/gui/configWizard.py:603
+#: Cura/gui/configWizard.py:699
 msgid "Upgrade Ultimaker Firmware"
 msgstr ""
 
-#: Cura/gui/configWizard.py:604
+#: Cura/gui/configWizard.py:700
 msgid ""
 "Firmware is the piece of software running directly on your 3D printer.\n"
 "This firmware controls the step motors, regulates the temperature\n"
 "and ultimately makes your printer work."
 msgstr ""
 
-#: Cura/gui/configWizard.py:606
+#: Cura/gui/configWizard.py:702
 msgid ""
 "The firmware shipping with new Ultimakers works, but upgrades\n"
 "have been made to make better prints, and make calibration easier."
 msgstr ""
 
-#: Cura/gui/configWizard.py:608
+#: Cura/gui/configWizard.py:704
 msgid ""
 "Cura requires these new features and thus\n"
 "your firmware will most likely need to be upgraded.\n"
 "You will get the chance to do so now."
 msgstr ""
 
-#: Cura/gui/configWizard.py:614
+#: Cura/gui/configWizard.py:710
 msgid "Do not upgrade to this firmware if:"
 msgstr ""
 

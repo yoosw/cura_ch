@@ -1362,6 +1362,13 @@ class SceneView(openglGui.glGuiPanel):
 				filename = resources.getPathForMesh('Witbox_platform.stl')
 				offset = [0,-37,145]
 
+			#swyoo 2016.03.28
+			elif machine_type == 'flexor D500':
+				filename = resources.getPathForMesh('ultimaker2_platform.stl')
+				offset = [0, -37, 145]
+				texture_offset = [0, 150, -5]
+				texture_name = 'splash.png'
+
 			if filename is not None:
 				meshes = meshLoader.loadMeshes(filename)
 				if len(meshes) > 0:

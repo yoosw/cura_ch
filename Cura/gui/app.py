@@ -107,7 +107,8 @@ class CuraApp(wx.App):
 		from Cura.util import resources
 		from Cura.util import version
 
-		resources.setupLocalization(profile.getPreference('language'))  # it's important to set up localization at very beginning to install _
+		# resources.setupLocalization(profile.getPreference('language'))  # it's important to set up localization at very beginning to install _
+		resources.setupLocalization('Korean')
 
 		#If we do not have preferences yet, try to load it from a previous Cura install
 		# swyoo 2016.02.01
@@ -138,6 +139,7 @@ class CuraApp(wx.App):
 				self.splash.Show(False)
 			configWizard.ConfigWizard()
 
+		""" # Disable Checking for Updates
 		if profile.getPreference('check_for_updates') == 'True':
 			newVersion = version.checkForNewerVersion()
 			if newVersion is not None:
@@ -146,6 +148,8 @@ class CuraApp(wx.App):
 				if wx.MessageBox(_("A new version of Cura is available, would you like to download?"), _("New version available"), wx.YES_NO | wx.ICON_INFORMATION) == wx.YES:
 					webbrowser.open(newVersion)
 					return
+		"""
+
 		if profile.getMachineSetting('machine_name') == '':
 			return
 		self.mainWindow = mainWindow.mainWindow()

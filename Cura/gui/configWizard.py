@@ -234,12 +234,11 @@ class FirstInfoPage(InfoPage):
 			self.AddText(_("Welcome, and thanks for trying Cura FLEXOR!"))
 			self.AddSeperator()
 		self.AddText(_("This wizard will help you in setting up Cura FLEXOR for your machine."))
-		# swyoo 2016.02.02. prevent language
-		# if not addNew:
-		# 	self.AddSeperator()
-		# 	self._language_option = self.AddCombo(_("Select your language:"), map(lambda o: o[1], resources.getLanguageOptions()))
-		# else:
-		# 	self._language_option = None
+		if not addNew:
+			self.AddSeperator()
+			self._language_option = self.AddCombo(_("Select your language:"), map(lambda o: o[1], resources.getLanguageOptions()))
+		else:
+			self._language_option = None
 		# self.AddText(_("This wizard will help you with the following steps:"))
 		# self.AddText(_("* Configure Cura for your machine"))
 		# self.AddText(_("* Optionally upgrade your firmware"))
@@ -252,11 +251,10 @@ class FirstInfoPage(InfoPage):
 	def AllowBack(self):
 		return False
 
-	# swyoo 2016.02.02 prevent language
-	# def StoreData(self):
-	# 	if self._language_option is not None:
-	# 		profile.putPreference('language', self._language_option.GetValue())
-	# 		resources.setupLocalization(self._language_option.GetValue())
+	def StoreData(self):
+		if self._language_option is not None:
+			profile.putPreference('language', self._language_option.GetValue())
+			resources.setupLocalization(self._language_option.GetValue())
 
 class PrintrbotPage(InfoPage):
 	def __init__(self, parent):

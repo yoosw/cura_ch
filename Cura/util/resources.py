@@ -69,7 +69,7 @@ def getSimpleModeMaterials():
 
 def setupLocalization(selectedLanguage = None):
 	#Default to english
-	languages = ['en']
+	languages = ['ko']
 
 	if selectedLanguage is not None:
 		for item in getLanguageOptions():
@@ -83,13 +83,13 @@ def setupLocalization(selectedLanguage = None):
 
 def getLanguageOptions():
 	return [
+		['ko', 'Korean'],
 		['en', 'English'],
 		['de', 'Deutsch'],
 		['fr', 'French'],
 		['tr', 'Turkish'],
 		['ru', 'Russian'],
 		# ['it', 'Italian'],
-		# ['ko', 'Korean'],
 		# ['zh', 'Chinese'],
 		# ['nl', 'Nederlands'],
 		# ['es', 'Spanish'],

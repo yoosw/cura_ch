@@ -136,9 +136,7 @@ class mainWindow(wx.Frame):
 		#self.Bind(wx.EVT_MENU, self.OnBatchRun, i)
 		#self.normalModeOnlyItems.append(i)
 
-		# swyoo 2016.01.25
 		if minecraftImport.hasMinecraft():
-		# if 1:
 			i = toolsMenu.Append(-1, _("Minecraft map import..."))
 			self.Bind(wx.EVT_MENU, self.OnMinecraftImport, i)
 
