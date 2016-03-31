@@ -83,8 +83,8 @@ def setupLocalization(selectedLanguage = None):
 
 def getLanguageOptions():
 	return [
-		['ko', 'Korean'],
 		['en', 'English'],
+		['ko', 'Korean'],
 		['de', 'Deutsch'],
 		['fr', 'French'],
 		['tr', 'Turkish'],

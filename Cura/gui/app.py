@@ -107,8 +107,7 @@ class CuraApp(wx.App):
 		from Cura.util import resources
 		from Cura.util import version
 
-		# resources.setupLocalization(profile.getPreference('language'))  # it's important to set up localization at very beginning to install _
-		resources.setupLocalization('Korean')
+		resources.setupLocalization(profile.getPreference('language'))  # it's important to set up localization at very beginning to install _
 
 		#If we do not have preferences yet, try to load it from a previous Cura install
 		# swyoo 2016.02.01
