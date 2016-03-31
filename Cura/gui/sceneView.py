@@ -1363,12 +1363,6 @@ class SceneView(openglGui.glGuiPanel):
 				offset = [0,-37,145]
 
 			#swyoo 2016.03.28
-			elif machine_type == 'Flexor S300':
-				filename = resources.getPathForMesh('d300.stl')
-				offset = [0,0,2.5]
-				texture_offset = [0+5,-40-5,-0.05]
-				texture_name = 'splash.png'
-
 			elif machine_type == 'Flexor D300':
 				filename = resources.getPathForMesh('d300.stl')
 				offset = [100,100,0.1]
