@@ -24,7 +24,7 @@ ARCHIVE_FOR_DISTRIBUTION=1
 ##Which version name are we appending to the final archive
 #swyoo
 # export BUILD_NAME=15.04
-export BUILD_NAME=15.04_flexor_2
+export BUILD_NAME=15.04_flexor2
 TARGET_DIR=Cura-${BUILD_NAME}-${BUILD_TARGET}
 
 ##Which versions of external programs to use
@@ -614,7 +614,7 @@ if [ $BUILD_TARGET = "win32" ]; then
 	else
 		CXX=i686-w64-mingw32-g++
 	fi
-	
+
 	#For windows extract portable python to include it.
 	#swyoo prevent 2 line and copy direct
 	# extract PortablePython_${WIN_PORTABLE_PY_VERSION}.exe \$_OUTDIR/App

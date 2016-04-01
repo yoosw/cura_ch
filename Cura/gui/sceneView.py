@@ -1363,17 +1363,18 @@ class SceneView(openglGui.glGuiPanel):
 				offset = [0,-37,145]
 
 			#swyoo 2016.03.28
-			elif machine_type == 'Flexor D300':
+			elif machine_type == 'Flexor':
 				filename = resources.getPathForMesh('d300.stl')
-				offset = [100,100,0.1]
-				texture_offset = [0+5,-40-5,-0.05]
-				texture_name = 'splash.png'
+				offset = [0, 0, 2.5]
+				# texture_offset = [0, -30, -0.1]
+				texture_offset = [0, -10, -0.3]
+				texture_name = 'flexor_logo.png'
 
-			elif machine_type == 'Flexor D500':
-				filename = resources.getPathForMesh('d300.stl')
-				offset = [0, -37, 145]
-				texture_offset = [0+5,-40-5,-0.05]
-				texture_name = 'splash.png'
+			elif machine_type == 'FlexorD500':
+				filename = resources.getPathForMesh('d500.stl')
+				offset = [0, 0, 0.5]
+				texture_offset = [0, -10, -0.3]
+				texture_name = 'flexor_logo.png'
 
 			if filename is not None:
 				meshes = meshLoader.loadMeshes(filename)
@@ -1404,6 +1405,13 @@ class SceneView(openglGui.glGuiPanel):
 				h = 50
 				d = 8
 				w = 100
+
+				#swyoo 2016.03.31 image attach on bottom
+				if machine_type == 'Flexor' or machine_type == 'FlexorD500':
+					h = 25
+					w = 50
+					glRotate(-90, 1, 0, 0)
+
 				glEnable(GL_BLEND)
 				glBlendFunc(GL_DST_COLOR, GL_ONE_MINUS_SRC_ALPHA)
 				glEnable(GL_ALPHA_TEST)
